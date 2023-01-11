@@ -1,0 +1,191 @@
+/** General */
+.hover\:text-black:hover {
+	color: #31261d;
+}
+/** Modals */
+/* The Modal (background) */
+.modal {
+	display: none;
+   /* Hidden by default */
+	position: fixed;
+   /* Stay in place */
+	z-index: 1005;
+   /* Sit on top */
+	padding-top: 100px;
+   /* Location of the box */
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+   /* Full width */
+	height: 100%;
+   /* Full height */
+	overflow-y: auto;
+   /* Enable scroll if needed */
+	background-color: rgb(0,0,0);
+   /* Fallback color */
+	background-color: rgba(10,10,10,.45);
+   /* Black w/ opacity */
+}
+/* Modal Content */
+.modal-content {
+	position: relative;
+	margin: 0 auto;
+	background-color: #fefefe;
+	padding: 1rem;
+	border: 1px solid #cacaca;
+	border-radius: 0;
+	background-color: #fefefe;
+	border: 1px solid #888;
+	width: 80%;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+	-webkit-animation-name: animatetop;
+	-webkit-animation-duration: 0.4s;
+	animation-name: animatetop;
+	animation-duration: 0.4s 
+}
+/* Add Animation */
+@-webkit-keyframes animatetop {
+	from {
+	   top:-300px;
+		opacity:0
+   }
+	to {
+	   top:0;
+		opacity:1
+   }
+}
+@keyframes animatetop {
+	from {
+	   top:-300px;
+		opacity:0
+   }
+	to {
+	   top:0;
+		opacity:1
+   }
+}
+/* The Close Button */
+.close {
+	position: absolute;
+	z-index: 10;
+	color: #8a8a8a;
+	cursor: pointer;
+	right: 1rem;
+	top: 0.5rem;
+	font-size: 2em;
+	line-height: 1;
+}
+.close:hover, .close:focus {
+	color: #31261d;
+	text-decoration: none;
+	cursor: pointer;
+}
+.modal-header {
+	color: #fefefe;
+}
+.modal-header h1 {
+	font-family: gentona-bold,"Helvetica Neue",Roboto,sans-serif;
+	font-weight: 700;
+	font-size: 1.5rem;
+	padding-right: 1rem;
+}
+.modal-body p {
+	padding-right: 1rem;
+	font-size: 1rem;
+	line-height: 1.5;
+}
+.modal-body ul {
+	padding-left: 1.25rem;
+}
+.modal-body ul li {
+	margin: 0.5rem 0;
+	padding-left: 0;
+}
+.modal-button {
+	border-style: solid;
+	border-width: 1px;
+	font-family: Gentona-SemiBold,system-ui,BlinkMacSystemFont,-apple-system,Segoe UI,sans-serif;
+	text-align: center;
+	height: 4rem;
+	width: 5rem;
+}
+@media print, screen and (min-width: 40em) {
+	.modal-content {
+		width: 1000px;
+		max-width: 87.5rem;
+   }
+}
+/** Course Table */
+.course-table thead {
+	background: rgba(191,204,217,.25);
+	color: #31261d;
+}
+.course-table tbody, tfoot, thead {
+	border: 1px solid #f1f1f1;
+	background-color: #fefefe;
+}
+.course-table th {
+	font-family: gentona-semibold,"Helvetica Neue",Roboto,sans-serif;
+	font-weight: 600;
+}
+.course-listings div.dataTables_wrapper div.dataTables_info {
+	padding: 8px;
+}
+.course-listings .dataTables_info {
+	float: inherit!important;
+	clear: none;
+}
+table.dataTable.course-table tbody tr.even{
+	background-color: #F8F8F8 !important;
+}
+/** Data Tables Overrides */
+.dataTables_wrapper .dataTables_length {
+	float: inherit!important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+	background: #68ace5 !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+	background: #002d72 !important;
+}
+.all-courses .dtsp-searchPanes .dtsp-searchPane tbody tr {
+	background-color: white;
+}
+.all-courses .course-table tbody tr:nth-child(even) {
+	background-color: #f4f4f4 !important;
+}
+.all-courses .dtsp-title {
+	font-size: 1.5rem;
+	display: none;
+	font-family: Gentona-SemiBold, system-ui;
+}
+.all-courses div.dtsp-panesContainer button.dtsp-clearAll {
+	background-color: #002d72;
+	color: #fefefe;
+}
+.all-courses div.dtsp-panesContainer button.dtsp-clearAll:disabled {
+	opacity: 0.25;
+	cursor: not-allowed;
+}
+.all-courses div.dtsp-panesContainer div.dataTables_wrapper div.dataTables_scrollBody div.dtsp-nameCont span.dtsp-name {
+	font-size: 1rem;
+}
+.all-courses table.dataTable tbody tr.selected {
+	background-color: #68ace5;
+}
+.all-courses div.dtsp-searchPane div.dataTables_scrollBody {
+	height: auto !important;
+}
+.all-courses .dataTables_wrapper .dataTables_length select {
+	padding: 0.5rem !important;
+	padding-right: 1.5rem !important;
+}
+.all-courses input.dtsp-paneInputButton.dtsp-search {
+	background-color: #f4f4f4 !important;
+	font-family: Gentona-SemiBold, system-ui;
+}
+.all-courses div.dtsp-topRow {
+	margin-bottom: 0.5rem;
+}
