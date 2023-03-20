@@ -72,7 +72,10 @@ jQuery(document).ready( function($) {
         "lengthMenu": [[15, 30, -1],[15, 30, "All"]],
         "dom": 'Plfrtip',
         "language": {
-            "emptyTable": "Courses have a status of Closed, or are unavailable at this time. Please try again later."
+            "emptyTable": "Courses have a status of Closed, or are unavailable at this time. Please try again later.",
+            searchPanes: {
+                emptyPanes: null,
+            }
         },
         searchPanes: {
             preSelect: [{
