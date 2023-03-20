@@ -74,20 +74,20 @@ jQuery(document).ready( function($) {
         "language": {
             "emptyTable": "Courses have a status of Closed, or are unavailable at this time. Please try again later."
         },
+        searchPanes: {
+            preSelect: [{
+                rows:['Spring 2023'],
+                column: 5
+            }],
+        },
         columnDefs: [
         {
-            searchPanes: {
-                show: true,
-                preSelect: ['Fall 2022']
-            },
-            targets: [5]
-        },
-        {
+            //This hides all but Term pane from search/filter
             searchPanes: {
                 show: false
             },
             targets: [0,1,2,3,4,6]
         }
-    ]
+        ]
     } );
 } );
