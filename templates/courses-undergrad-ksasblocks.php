@@ -1,7 +1,7 @@
 <?php
 /**
- * Template Name: SIS Courses (Undergraduate)
- * Description: Display SIS courses in KSAS Blocks Theme
+ * Template Name: SIS Courses
+ * Description: Display SIS courses in KSAS Blocks & Department Theme
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
@@ -10,6 +10,7 @@
 
 get_header();
 ?>
+
 <?php
 	// Load Zebra Curl.
 	require plugin_dir_path( __DIR__ ) . '/lib/Zebra_cURL.php';
@@ -62,8 +63,11 @@ get_header();
 
 					$section = $course->{'SectionName'};
 					$level   = $course->{'Level'};
-					$parent  = 'Undergraduate';
-
+					if ( get_field( 'course_level' ) === 'Graduate' ) {
+						$parent = 'Graduate';
+					} elseif ( get_field( 'course_level' ) === 'Undergraduate' ) {
+						$parent = 'Undergraduate';
+					}
 					if ( strpos( $level, $parent ) !== false || ( $level === '' ) !== false ) {
 						$number       = $course->{'OfferingName'};
 						$clean_number = preg_replace( '/[^A-Za-z0-9\-]/', '', $number );
@@ -127,15 +131,20 @@ get_header();
 	?>
 
 <main id="site-content" class="site-main prose sm:prose lg:prose-lg mx-auto">
+<?php
+	$theme = wp_get_theme(); // Gets the current theme.
+if ( 'ksas-blocks' === $theme->template ) :
+	// Gets the parent theme template.
+	?>
 
-	<?php
-	if ( function_exists( 'bcn_display' ) ) :
-		?>
-	<div class="breadcrumbs" typeof="BreadcrumbList" vocab="https://schema.org/">
-		<?php bcn_display(); ?>
-	</div>
+		<?php
+		if ( function_exists( 'bcn_display' ) ) :
+			?>
+		<div class="breadcrumbs" typeof="BreadcrumbList" vocab="https://schema.org/">
+			<?php bcn_display(); ?>
+		</div>
+		<?php endif; ?>
 	<?php endif; ?>
-
 	<?php
 	while ( have_posts() ) :
 		the_post();

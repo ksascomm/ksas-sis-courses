@@ -75,12 +75,12 @@ if ( ! class_exists( 'PageTemplater' ) ) {
 			);
 
 			$theme = wp_get_theme(); // Gets the current theme.
-			if ( 'KSAS Blocks' == $theme->name || 'KSAS Blocks' == $theme->parent_theme ) {
+			if ( 'KSAS Blocks' == $theme->name || 'KSAS Department Tailwind' == $theme->name || 'KSAS Blocks' == $theme->parent_theme ) {
 				// Check if KSAS Blocks is the active theme or
 				// is the current theme's parent theme.
 				// If YES, add the template(s) to this array.
 				$this->templates = array(
-					'../templates/courses-undergrad-ksasblocks.php' => 'SIS Courses (Undergraduate)',
+					'../templates/courses-undergrad-ksasblocks.php' => 'SIS Courses',
 				);
 			}
 		}
