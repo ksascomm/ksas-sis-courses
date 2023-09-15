@@ -38,7 +38,7 @@ if ( ! function_exists( 'register_script' ) ) {
 
 		wp_register_style( 'courses-css', plugins_url( '/css/courses.css', __FILE__ ), false, '1.0.0', 'all' );
 
-		wp_enqueue_script( 'data-tables', '//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js', array(), '1.13.4', false );
+		wp_enqueue_script( 'data-tables', '//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js', array(), '1.13.6', false );
 		wp_script_add_data( 'data-tables', 'defer', true );
 
 		wp_enqueue_script( 'data-tables-searchpanes', '//cdn.datatables.net/searchpanes/2.2.0/js/dataTables.searchPanes.min.js', array(), '2.2.0', false );
