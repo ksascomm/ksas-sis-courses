@@ -20,7 +20,7 @@ get_header();
 	$department_unclean         = $sis_courses_plugin_options['department_name_0'];
 	$department                 = str_replace( ' ', '%20', $department_unclean );
 	$department                 = str_replace( '&', '%26', $department );
-	$fall                       = 'fall%202023';
+	$fall                       = 'fall%202024';
 	$summer                     = 'summer%202024';
 	$spring                     = 'spring%202024';
 	$open                       = 'open';

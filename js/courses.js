@@ -79,7 +79,7 @@ jQuery(document).ready( function($) {
         },
         searchPanes: {
             preSelect: [{
-                rows:['Spring 2024'],
+                rows:['Fall 2024'],
                 column: 5
             }],
         },
