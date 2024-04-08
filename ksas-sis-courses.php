@@ -32,19 +32,19 @@ if ( ! function_exists( 'register_script' ) ) {
 	 * @since 1.0.0
 	 */
 	function register_script() {
-		wp_enqueue_style( 'data-tables', '//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css', array(), true );
+		wp_enqueue_style( 'data-tables', '//cdn.datatables.net/2.0.3/css/dataTables.dataTables.min.css', array(), true );
 
-		wp_enqueue_style( 'data-tables-searchpanes', '//cdn.datatables.net/searchpanes/2.2.0/css/searchPanes.dataTables.min.css', array(), true );
+		wp_enqueue_style( 'data-tables-searchpanes', '//cdn.datatables.net/searchpanes/2.3.0/css/searchPanes.dataTables.min.css', array(), true );
 
 		wp_register_style( 'courses-css', plugins_url( '/css/courses.css', __FILE__ ), false, '1.0.0', 'all' );
 
-		wp_enqueue_script( 'data-tables', '//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js', array(), '1.13.7', false );
+		wp_enqueue_script( 'data-tables', '//cdn.datatables.net/2.0.3/js/dataTables.min.js', array(), '2.0.3', false );
 		wp_script_add_data( 'data-tables', 'defer', true );
 
-		wp_enqueue_script( 'data-tables-searchpanes', '//cdn.datatables.net/searchpanes/2.2.0/js/dataTables.searchPanes.min.js', array(), '2.2.0', false );
+		wp_enqueue_script( 'data-tables-searchpanes', '//cdn.datatables.net/searchpanes/2.3.0/js/dataTables.searchPanes.min.js', array(), '2.3.0', false );
 		wp_script_add_data( 'data-tables-searchpanes', 'defer', true );
 
-		wp_enqueue_script( 'data-tables-select', '//cdn.datatables.net/select/1.7.0/js/dataTables.select.min.js', array(), '1.7.0', false );
+		wp_enqueue_script( 'data-tables-select', '//cdn.datatables.net/select/2.0.0/js/dataTables.select.min.js', array(), '2.0.0', false );
 		wp_script_add_data( 'data-tables-select', 'defer', true );
 
 		wp_register_script( 'courses-js', plugins_url( '/js/courses.js', __FILE__ ), array( 'jquery' ), '1.0.0', true );

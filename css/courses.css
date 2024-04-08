@@ -130,24 +130,30 @@
 	font-family: gentona-semibold,"Helvetica Neue",Roboto,sans-serif;
 	font-weight: 600;
 }
-.course-listings div.dataTables_wrapper div.dataTables_info {
+.course-listings div.dataTables_wrapper div.dataTables_info,
+.course-listings .dt-info {
 	padding: 8px;
 }
-.course-listings .dataTables_info {
+.course-listings .dataTables_info,
+.course-listings .dt-info {
 	float: inherit!important;
 	clear: none;
 }
+
 table.dataTable.course-table tbody tr.even{
 	background-color: #F8F8F8 !important;
 }
 /** Data Tables Overrides */
-.dataTables_wrapper .dataTables_length {
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dt-length {
 	float: inherit!important;
 }
-.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+div.dt-container .dt-paging .dt-paging-button.current {
 	background: #68ace5 !important;
 }
-.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover,
+div.dt-container .dt-paging .dt-paging-button:hover {
 	background: #002d72 !important;
 }
 .all-courses .dtsp-searchPanes .dtsp-searchPane tbody tr {
@@ -178,7 +184,8 @@ table.dataTable.course-table tbody tr.even{
 .all-courses div.dtsp-searchPane div.dataTables_scrollBody {
 	height: auto !important;
 }
-.all-courses .dataTables_wrapper .dataTables_length select {
+.all-courses .dataTables_wrapper .dataTables_length select,
+.all-courses .dt-length select {
 	padding: 0.5rem !important;
 	padding-right: 1.5rem !important;
 }
@@ -188,4 +195,24 @@ table.dataTable.course-table tbody tr.even{
 }
 .all-courses div.dtsp-topRow {
 	margin-bottom: 0.5rem;
+}
+
+.all-courses .dt-search {
+	float: right;
+}
+
+.page-template-courses-undergrad-ksasblocks div.dtsp-panesContainer button.dtsp-clearAll, 
+.page-template-courses-undergrad-ksasblocks div.dtsp-panesContainer button.dtsp-collapseAll,
+.page-template-courses-undergrad-ksasblocks div.dtsp-panesContainer button.dtsp-showAll {
+  padding: 10px;
+}
+
+.page-template-courses-undergrad-ksasblocks .dt-scroll-body {
+  height: auto !important;
+}
+
+@media screen and (min-width: 1024px) {
+	.dt-paging.paging_full_numbers {
+		float: right;
+	  }	
 }
