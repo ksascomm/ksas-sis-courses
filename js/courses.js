@@ -40,35 +40,12 @@ window.onclick = function(event) {
     }
 }
 
-//Data Tables scripts
-/*jQuery(document).ready(function($) {
-    $('a[aria-selected="true"]').on('shown.bs.tab', function(e) {
-        $.fn.dataTable.tables({
-            visible: true,
-            api: true
-        }).columns.adjust();
-    });
-
-    $('table.course-table').DataTable({
-        "order": [
-            [0, "asc"]
-        ],
-        "lengthMenu": [ [-1, 25, 50, 75], ["All", 25, 50, 75] ],
-        //"paging": false,
-        "dom": '<"top"f>ilrt<"bottom"p><"clear">',
-        "language": {
-            "emptyTable": "Courses have a status of Closed, or are unavailable at this time. Please try again later."
-        }
-    });
-});*/
-
 jQuery(document).ready( function($) {
     $('a[aria-selected="true"]').on( 'shown.bs.tab', function (e) {
         $.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust();
     } );
 
     $('table.course-table').DataTable( {
-        responsive: true,
         "order": [[ 0, "asc" ]],
         "lengthMenu": [[15, 30, -1],[15, 30, "All"]],
         "dom": 'Plfrtip',

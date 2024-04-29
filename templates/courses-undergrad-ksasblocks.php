@@ -120,7 +120,7 @@ get_header();
 			}
 			$print_tags = empty( $tags ) ? 'n/a' : implode( ', ', $tags );
 
-			$output .= '<tr><td>' . $course_number . '&nbsp;(' . $section_number . ')</td><td>' . $title . '</td><td class="show-for-medium">' . $meetings . '</td><td class="show-for-medium">' . $instructor . '</td><td class="show-for-medium">' . $room . '&nbsp;' . $roomnumber . '</td><td>' . $term . '</td>';
+			$output .= '<tr><td>' . $course_number . '&nbsp;(' . $section_number . ')</td><td>' . $title . '</td><td class="show-for-medium">' . $meetings . '</td><td class="show-for-medium">' . $instructor . '</td><td class="show-for-medium">' . $room . '&nbsp;' . $roomnumber . '</td><td class="show-for-medium">' . $term . '</td>';
 
 			$output .= '<td><p class="hidden">' . $description . '</p><button class="modal-button bg-blue text-white px-2 hover:text-black hover:bg-blue-light" href="#course-' . $clean_course_number . $section_number . $clean_term . '">More Info<span class="sr-only">-' . $title . '-' . $section_number . '</span></button></td></tr>';
 

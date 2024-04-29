@@ -10,8 +10,6 @@
 	position: fixed;
    /* Stay in place */
 	z-index: 1005;
-   /* Sit on top */
-	padding-top: 100px;
    /* Location of the box */
 	top: 0;
 	right: 0;
@@ -111,11 +109,37 @@
 	height: 4rem;
 	width: 5rem;
 }
+
+@media print, screen and (max-width: 39.9988em) {
+	.modal-content {
+	  top: 0;
+	  right: 0;
+	  bottom: 0;
+	  left: 0;
+	  width: 100%;
+	  max-width: none;
+	  height: 100%;
+	  min-height: 100%;
+	  margin-left: 0;
+	  border: 0;
+	  border-radius: 0;
+	}
+  }
+
+@media print, screen and (min-width: 40em) {
+	.modal-content {
+		width: 600px;
+		max-width: 87.5rem;
+	}
+	.modal {
+		padding-top: 100px;
+	}
+}
 @media print, screen and (min-width: 1280px) {
 	.modal-content {
 		width: 1000px;
 		max-width: 87.5rem;
-   }
+	}
 }
 /** Course Table */
 .course-table thead {
@@ -222,10 +246,9 @@ table.dataTable > tbody > tr.child span.dtr-title {
 	  }	
 }
 
-@media screen and (max-width: 825px) {
-	.course-table button.modal-button,
-	li[data-dt-column="6"] {
-		visibility: hidden;
-		display: none;
+@media screen and (max-width: 39.9988em) {
+	.show-for-medium {
+	  display: none !important;
 	}
-}
+  }
+  
