@@ -68,6 +68,7 @@ jQuery(document).ready( function($) {
     } );
 
     $('table.course-table').DataTable( {
+        responsive: true,
         "order": [[ 0, "asc" ]],
         "lengthMenu": [[15, 30, -1],[15, 30, "All"]],
         "dom": 'Plfrtip',
