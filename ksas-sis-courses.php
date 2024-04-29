@@ -19,7 +19,7 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  */
 
-define( 'KSAS_SIS_COURSES_VERSION', '1.0.0' );
+define( 'KSAS_SIS_COURSES_VERSION', '1.0.1' );
 
 require plugin_dir_path( __FILE__ ) . '/includes/class-pagetemplater.php';
 require plugin_dir_path( __FILE__ ) . '/includes/class-siscoursessettings.php';
@@ -38,7 +38,7 @@ if ( ! function_exists( 'register_script' ) ) {
 
 		wp_enqueue_style( 'data-tables-responsive', '//cdn.datatables.net/responsive/3.0.2/css/responsive.dataTables.min.css', array(), true );
 
-		wp_register_style( 'courses-css', plugins_url( '/css/courses.css', __FILE__ ), false, '1.0.0', 'all' );
+		wp_register_style( 'courses-css', plugins_url( '/css/courses.css', __FILE__ ), false, '1.0.1', 'all' );
 
 		wp_enqueue_script( 'data-tables', '//cdn.datatables.net/2.0.3/js/dataTables.min.js', array(), '2.0.3', false );
 		wp_script_add_data( 'data-tables', 'defer', true );
