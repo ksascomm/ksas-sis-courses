@@ -111,7 +111,7 @@
 	height: 4rem;
 	width: 5rem;
 }
-@media print, screen and (min-width: 40em) {
+@media print, screen and (min-width: 1280px) {
 	.modal-content {
 		width: 1000px;
 		max-width: 87.5rem;
@@ -211,8 +211,21 @@ div.dt-container .dt-paging .dt-paging-button:hover {
   height: auto !important;
 }
 
+table.dataTable > tbody > tr.child span.dtr-title {
+	font-family: gentona-semibold,"Helvetica Neue",Roboto,sans-serif;
+	font-weight: 600;
+}
+
 @media screen and (min-width: 1024px) {
 	.dt-paging.paging_full_numbers {
 		float: right;
 	  }	
+}
+
+@media screen and (max-width: 825px) {
+	.course-table button.modal-button,
+	li[data-dt-column="6"] {
+		visibility: hidden;
+		display: none;
+	}
 }
