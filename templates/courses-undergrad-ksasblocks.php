@@ -124,7 +124,7 @@ get_header();
 
 			$output .= '<td><p class="hidden">' . $description . '</p><button class="modal-button bg-blue text-white px-2 hover:text-black hover:bg-blue-light" href="#course-' . $clean_course_number . $section_number . $clean_term . '">More Info<span class="sr-only">-' . $title . '-' . $section_number . '</span></button></td></tr>';
 
-			$output .= '<div class="modal" id="course-' . $clean_course_number . $section_number . $clean_term . '"><div class="modal-content"><div class="modal-header"><span class="close">×</span><h1 id="' . $clean_term . $course_number . '-' . $section_number . '">' . $title . '<br><small>' . $course_number . '&nbsp;(' . $section_number . ')</small></h1></div><div class="modal-body"><p>' . $description . '<ul><li><strong>Days/Times:</strong> ' . $meetings . ' </li><li><strong>Instructor:</strong> ' . $instructor . ' </li><li><strong>Room:</strong> ' . $room . '&nbsp;' . $roomnumber . ' </li><li><strong>Status:</strong> ' . $status . '</li><li><strong>Seats Available:</strong> ' . $seatsavailable . '</li><li><strong>PosTag(s):</strong> ' . $print_tags . '</li></ul></p></div></div></div>';
+			$output .= '<div class="modal" id="course-' . $clean_course_number . $section_number . $clean_term . '"><div class="modal-content"><div class="modal-header"><span class="close">×</span><h1 id="' . $clean_term . $course_number . '-' . $section_number . '">' . $title . '<br><small>' . $course_number . '&nbsp;(' . $section_number . ')</small></h1></div><div class="modal-body"><p>' . $description . '</p><ul><li><strong>Days/Times:</strong> ' . $meetings . ' </li><li><strong>Instructor:</strong> ' . $instructor . ' </li><li><strong>Room:</strong> ' . $room . '&nbsp;' . $roomnumber . ' </li><li><strong>Status:</strong> ' . $status . '</li><li><strong>Seats Available:</strong> ' . $seatsavailable . '</li><li><strong>PosTag(s):</strong> ' . $print_tags . '</li></ul></div></div></div>';
 		}
 	);
 
@@ -157,13 +157,13 @@ if ( 'ksas-blocks' === $theme->template ) :
 	<table aria-describedby="tblDescfall" class="course-table">
 		<thead>
 			<tr>
-				<th>Course # (Section)</th>
+				<th data-priority="1">Course # (Section)</th>
 				<th>Title</th>
-				<th class="show-for-medium">Day/Times</th>
-				<th class="show-for-medium">Instructor</th>
-				<th class="show-for-medium">Location</th>
-				<th class="show-for-medium">Term</th>
-				<th>Course Details</th>
+				<th>Day/Times</th>
+				<th>Instructor</th>
+				<th>Location</th>
+				<th>Term</th>
+				<th data-priority="2">Course Details</th>
 			</tr>
 		</thead>
 		<tbody>

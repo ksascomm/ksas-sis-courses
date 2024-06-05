@@ -46,6 +46,11 @@ jQuery(document).ready( function($) {
     } );
 
     $('table.course-table').DataTable( {
+        responsive: {
+            details: {
+                renderer:  DataTable.Responsive.renderer.listHiddenNodes()
+            }
+        },
         "order": [[ 0, "asc" ]],
         "lengthMenu": [[15, 30, -1],[15, 30, "All"]],
         "dom": 'Plfrtip',
