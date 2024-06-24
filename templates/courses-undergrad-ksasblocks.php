@@ -131,20 +131,7 @@ get_header();
 	?>
 
 <main id="site-content" class="site-main prose sm:prose lg:prose-lg mx-auto">
-<?php
-	$theme = wp_get_theme(); // Gets the current theme.
-if ( 'ksas-blocks' === $theme->template ) :
-	// Gets the parent theme template.
-	?>
 
-		<?php
-		if ( function_exists( 'bcn_display' ) ) :
-			?>
-		<div class="breadcrumbs" typeof="BreadcrumbList" vocab="https://schema.org/">
-			<?php bcn_display(); ?>
-		</div>
-		<?php endif; ?>
-	<?php endif; ?>
 	<?php
 	while ( have_posts() ) :
 		the_post();
