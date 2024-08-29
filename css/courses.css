@@ -207,8 +207,13 @@ div.dt-container .dt-paging .dt-paging-button:hover {
 .all-courses div.dtsp-panesContainer div.dataTables_wrapper div.dataTables_scrollBody div.dtsp-nameCont span.dtsp-name {
 	font-size: 1rem;
 }
-.all-courses table.dataTable tbody tr.selected {
+/*.all-courses table.dataTable tbody tr.selected {
 	background-color: #68ace5;
+}*/
+
+.all-courses .dataTable > tbody > tr.selected > * {
+	box-shadow: none;
+	background-color: #002d72;
 }
 .all-courses div.dtsp-searchPane div.dataTables_scrollBody {
 	height: auto !important;
