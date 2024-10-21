@@ -40,6 +40,7 @@ window.onclick = function(event) {
     }
 }
 
+// Initialisation script
 jQuery(document).ready( function($) {
     $('a[aria-selected="true"]').on( 'shown.bs.tab', function (e) {
         $.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust();

@@ -12,14 +12,14 @@
  * Plugin Name: KSAS SIS Courses
  * Plugin URI:  http://www.wpexplorer.com/wordpress-page-templates-plugin/
  * Description: Displays courses from SIS
- * Version:     2.0.0
+ * Version:     3.0.0
  * Author:      KSAS Communications
  * Author URI:  https://krieger.jhu.edu
  * License:     GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  */
 
-define( 'KSAS_SIS_COURSES_VERSION', '1.0.2' );
+define( 'KSAS_SIS_COURSES_VERSION', '3.0.0' );
 
 require plugin_dir_path( __FILE__ ) . '/includes/class-pagetemplater.php';
 require plugin_dir_path( __FILE__ ) . '/includes/class-siscoursessettings.php';
@@ -32,18 +32,18 @@ if ( ! function_exists( 'register_script' ) ) {
 	 * @since 1.0.0
 	 */
 	function register_script() {
-		wp_enqueue_style( 'data-tables', '//cdn.datatables.net/2.1.7/css/dataTables.dataTables.min.css', array(), true );
+		wp_enqueue_style( 'data-tables', '//cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css', array(), true );
 
-		wp_enqueue_style( 'data-tables-searchpanes', '//cdn.datatables.net/searchpanes/2.3.2/css/searchPanes.dataTables.min.css', array(), true );
+		wp_enqueue_style( 'data-tables-searchpanes', '//cdn.datatables.net/searchpanes/2.3.3/css/searchPanes.dataTables.min.css', array(), true );
 
 		wp_enqueue_style( 'data-tables-responsive', '//cdn.datatables.net/responsive/3.0.3/css/responsive.dataTables.min.css', array(), true );
 
 		wp_register_style( 'courses-css', plugins_url( '/css/courses.css', __FILE__ ), false, '1.0.4', 'all' );
 
-		wp_enqueue_script( 'data-tables', '//cdn.datatables.net/2.1.7/js/dataTables.min.js', array(), '2.1.7', false );
+		wp_enqueue_script( 'data-tables', '//cdn.datatables.net/2.1.8/js/dataTables.min.js', array(), '2.1.8', false );
 		wp_script_add_data( 'data-tables', 'defer', true );
 
-		wp_enqueue_script( 'data-tables-searchpanes', '//cdn.datatables.net/searchpanes/2.3.2/js/dataTables.searchPanes.min.js', array(), '2.3.2', false );
+		wp_enqueue_script( 'data-tables-searchpanes', '//cdn.datatables.net/searchpanes/2.3.3/js/dataTables.searchPanes.min.js', array(), '2.3.3', false );
 		wp_script_add_data( 'data-tables-searchpanes', 'defer', true );
 
 		wp_enqueue_script( 'data-tables-select', '//cdn.datatables.net/select/2.1.0/js/dataTables.select.min.js', array(), '2.1.0', false );

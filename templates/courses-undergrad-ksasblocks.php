@@ -22,7 +22,7 @@ get_header();
 	$department                 = str_replace( '&', '%26', $department );
 	$fall                       = 'fall%202024';
 	$summer                     = 'summer%202024';
-	$spring                     = 'spring%202024';
+	$spring                     = 'spring%202025';
 	$open                       = 'open';
 	$approval                   = 'approval%20required';
 	$closed                     = 'closed';
