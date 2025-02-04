@@ -145,6 +145,7 @@
 .course-table thead {
 	background: rgba(191,204,217,.25);
 	color: #31261d;
+	font-size: 1.125rem;
 }
 .course-table tbody, tfoot, thead {
 	border: 1px solid #f1f1f1;
@@ -157,6 +158,9 @@
 
 .course-table td {
 	font-size: 1rem;
+	vertical-align: top;
+	padding-inline-start: 0;
+	padding-inline-end: 0;
 }
 
 .course-listings div.dataTables_wrapper div.dataTables_info,
@@ -187,6 +191,7 @@ div.dt-container .dt-paging .dt-paging-button:hover {
 }
 .all-courses .dtsp-searchPanes .dtsp-searchPane tbody tr {
 	background-color: white;
+	font-size: 1.125rem;
 }
 .all-courses .course-table tbody tr:nth-child(even) {
 	background-color: #f4f4f4 !important;
@@ -235,9 +240,9 @@ div.dt-container .dt-paging .dt-paging-button:hover {
 	float: right;
 }
 
-.all-courses table.dataTable>tbody>tr>th, table.dataTable>tbody>tr>td {
+/*.all-courses table.dataTable>tbody>tr>th, table.dataTable>tbody>tr>td {
 	padding: 0;
-}
+}*/
 
 .page-template-courses-undergrad-ksasblocks div.dtsp-panesContainer button.dtsp-clearAll, 
 .page-template-courses-undergrad-ksasblocks div.dtsp-panesContainer button.dtsp-collapseAll,
