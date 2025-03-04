@@ -54,7 +54,14 @@ jQuery(document).ready( function($) {
         },
         "order": [[ 0, "asc" ]],
         "lengthMenu": [[15, 30, -1],[15, 30, "All"]],
-        "dom": 'Plfrtip',
+        "layout": {
+            top1: 'searchPanes',
+            topStart: 'pageLength',
+            topEnd: 'search',
+            bottomStart: 'info',
+            bottomEnd: 'paging'
+        },
+        //"dom": 'Plfrtip',
         "language": {
             "emptyTable": "Courses have a status of Closed, or are unavailable at this time. Please try again later.",
             searchPanes: {
@@ -62,10 +69,12 @@ jQuery(document).ready( function($) {
             }
         },
         searchPanes: {
-            preSelect: [{
-                rows:['Spring 2025'],
-                column: 5
-            }],
+            preSelect: [
+                {
+                    column: 5,
+                    rows:['Spring 2025']
+                }
+            ],
         },
         columnDefs: [
         {

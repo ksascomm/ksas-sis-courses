@@ -201,6 +201,12 @@ div.dt-container .dt-paging .dt-paging-button:hover {
 	display: none;
 	font-family: Gentona-SemiBold, system-ui;
 }
+
+.all-courses .dtsp-panesContainer {
+	padding: .5rem;
+	border: 2px solid #f4f4f4;
+}
+
 .all-courses div.dtsp-panesContainer button.dtsp-clearAll {
 	background-color: #002d72;
 	color: #fefefe;
@@ -247,11 +253,15 @@ div.dt-container .dt-paging .dt-paging-button:hover {
 .page-template-courses-undergrad-ksasblocks div.dtsp-panesContainer button.dtsp-clearAll, 
 .page-template-courses-undergrad-ksasblocks div.dtsp-panesContainer button.dtsp-collapseAll,
 .page-template-courses-undergrad-ksasblocks div.dtsp-panesContainer button.dtsp-showAll {
-  padding: 10px;
+  padding: 5px 10px;
 }
 
 .page-template-courses-undergrad-ksasblocks .dt-scroll-body {
   height: auto !important;
+}
+
+.all-courses div.dt-container div.dt-layout-full > :only-child {
+	width: 100%;
 }
 
 table.dataTable > tbody > tr.child span.dtr-title {
