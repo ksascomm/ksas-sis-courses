@@ -20,8 +20,8 @@ get_header();
 	$department_unclean         = $sis_courses_plugin_options['department_name_0'];
 	$department                 = str_replace( ' ', '%20', $department_unclean );
 	$department                 = str_replace( '&', '%26', $department );
-	$fall                       = 'fall%202024';
-	$summer                     = 'summer%202024';
+	$fall                       = 'fall%202025';
+	$summer                     = 'summer%202025';
 	$spring                     = 'spring%202025';
 	$open                       = 'open';
 	$approval                   = 'approval%20required';
@@ -51,7 +51,7 @@ get_header();
 	// get the first set of data.
 	$course_curl->get(
 		$courses_fall_url,
-		function( $result ) use ( &$course_data ) {
+		function ( $result ) use ( &$course_data ) {
 
 			$key = '0jCaUO1bHwbG1sFEKQd3iXgBgxoDUOhR';
 
@@ -63,12 +63,17 @@ get_header();
 
 					$section = $course->{'SectionName'};
 					$level   = $course->{'Level'};
+					$course_level_field = get_field( 'course_level' );
 					if ( get_field( 'course_level' ) === 'Graduate' ) {
 						$parent = 'Graduate';
 					} elseif ( get_field( 'course_level' ) === 'Undergraduate' ) {
 						$parent = 'Undergraduate';
 					}
-					if ( strpos( $level, $parent ) !== false || ( $level === '' ) !== false ) {
+					if (
+						strpos( $level, $parent ) !== false ||
+						$level === '' ||
+						( $level === 'Independent Academic Work' && $course_level_field === 'Undergraduate' )
+					) {
 						$number       = $course->{'OfferingName'};
 						$clean_number = preg_replace( '/[^A-Za-z0-9\-]/', '', $number );
 						$dirty_term   = $course->{'Term_IDR'};
@@ -80,14 +85,13 @@ get_header();
 					}
 				}
 			}
-
 		}
 	);
 
 	// Now that we have the first set of data.
 	$course_curl->get(
 		$course_data,
-		function( $result ) use ( &$output ) {
+		function ( $result ) use ( &$output ) {
 
 			$result->body = ! is_array( $result->body ) ? json_decode( html_entity_decode( $result->body ) ) : $result->body;
 
@@ -107,6 +111,22 @@ get_header();
 			$description         = $result->body[0]->{'SectionDetails'}[0]->{'Description'};
 			$room                = $result->body[0]->{'SectionDetails'}[0]->{'Meetings'}[0]->{'Building'};
 			$roomnumber          = $result->body[0]->{'SectionDetails'}[0]->{'Meetings'}[0]->{'Room'};
+			$room2 = '';
+			$roomnumber2 = '';
+			if (
+				isset( $result->body[0]->{'SectionDetails'}[0]->{'Meetings'}[1] ) &&
+				is_object( $result->body[0]->{'SectionDetails'}[0]->{'Meetings'}[1] )
+			) {
+				$second_meeting = $result->body[0]->{'SectionDetails'}[0]->{'Meetings'}[1];
+				$room2 = isset( $second_meeting->{'Building'} ) ? $second_meeting->{'Building'} : '';
+				$roomnumber2 = isset( $second_meeting->{'Room'} ) ? $second_meeting->{'Room'} : '';
+			}
+			// Build room info with or without the second room.
+			$room_info = $room . '&nbsp;' . $roomnumber;
+			// Add second room only if it exists.
+			if ( ! empty( $room2 ) || ! empty( $roomnumber2 ) ) {
+				$room_info .= '; ' . $room2 . '&nbsp;' . $roomnumber2;
+			}
 			$sectiondetails      = $result->body[0]->{'SectionDetails'}[0];
 			$tags                = array();
 
@@ -120,17 +140,17 @@ get_header();
 			}
 			$print_tags = empty( $tags ) ? 'n/a' : implode( ', ', $tags );
 
-			$output .= '<tr><td>' . $course_number . '&nbsp;(' . $section_number . ')</td><td>' . $title . '</td><td class="show-for-medium">' . $meetings . '</td><td class="show-for-medium">' . $instructor . '</td><td class="show-for-medium">' . $room . '&nbsp;' . $roomnumber . '</td><td class="show-for-medium">' . $term . '</td>';
+			$output .= '<tr><td>' . $course_number . '&nbsp;(' . $section_number . ')</td><td>' . $title . '</td><td class="show-for-medium">' . $meetings . '</td><td class="show-for-medium">' . $instructor . '</td><td class="show-for-medium">' . $room_info . '</td><td class="show-for-medium">' . $term . '</td>';
 
-			$output .= '<td><p class="hidden">' . $description . '</p><button class="modal-button bg-blue text-white px-2 hover:text-black hover:bg-blue-light" href="#course-' . $clean_course_number . $section_number . $clean_term . '">More Info<span class="sr-only">-' . $title . '-' . $section_number . '</span></button></td></tr>';
+			$output .= '<td><p class="hidden">' . $description . '</p><button class="px-2 text-white modal-button bg-blue hover:text-black hover:bg-blue-light" href="#course-' . $clean_course_number . $section_number . $clean_term . '">More Info<span class="sr-only">-' . $title . '-' . $section_number . '</span></button></td></tr>';
 
-			$output .= '<div class="modal" id="course-' . $clean_course_number . $section_number . $clean_term . '"><div class="modal-content"><div class="modal-header"><span class="close">×</span><h1 id="' . $clean_term . $course_number . '-' . $section_number . '">' . $title . '<br><small>' . $course_number . '&nbsp;(' . $section_number . ')</small></h1></div><div class="modal-body"><p>' . $description . '</p><ul><li><strong>Days/Times:</strong> ' . $meetings . ' </li><li><strong>Instructor:</strong> ' . $instructor . ' </li><li><strong>Room:</strong> ' . $room . '&nbsp;' . $roomnumber . ' </li><li><strong>Status:</strong> ' . $status . '</li><li><strong>Seats Available:</strong> ' . $seatsavailable . '</li><li><strong>PosTag(s):</strong> ' . $print_tags . '</li></ul></div></div></div>';
+			$output .= '<div class="modal" id="course-' . $clean_course_number . $section_number . $clean_term . '"><div class="modal-content"><div class="modal-header"><span class="close">×</span><h1 id="' . $clean_term . $course_number . '-' . $section_number . '">' . $title . '<br><small>' . $course_number . '&nbsp;(' . $section_number . ')</small></h1></div><div class="modal-body"><p>' . $description . '</p><ul><li><strong>Days/Times:</strong> ' . $meetings . ' </li><li><strong>Instructor:</strong> ' . $instructor . ' </li><li><strong>Room:</strong> ' . $room_info . '</li><li><strong>Status:</strong> ' . $status . '</li><li><strong>Seats Available:</strong> ' . $seatsavailable . '</li><li><strong>PosTag(s):</strong> ' . $print_tags . '</li></ul></div></div></div>';
 		}
 	);
 
 	?>
 
-<main id="site-content" class="site-main prose sm:prose lg:prose-lg mx-auto">
+<main id="site-content" class="mx-auto prose site-main sm:prose lg:prose-lg">
 
 	<?php
 	while ( have_posts() ) :
