@@ -32,24 +32,24 @@ if ( ! function_exists( 'register_script' ) ) {
 	 * @since 1.0.0
 	 */
 	function register_script() {
-		wp_enqueue_style( 'data-tables', '//cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css', array(), true );
+		wp_enqueue_style( 'data-tables', '//cdn.datatables.net/2.3.3/css/dataTables.dataTables.min.css', array(), true );
 
-		wp_enqueue_style( 'data-tables-searchpanes', '//cdn.datatables.net/searchpanes/2.3.3/css/searchPanes.dataTables.min.css', array(), true );
+		wp_enqueue_style( 'data-tables-searchpanes', '//cdn.datatables.net/searchpanes/2.3.5/css/searchPanes.dataTables.min.css', array(), true );
 
-		wp_enqueue_style( 'data-tables-responsive', '//cdn.datatables.net/responsive/3.0.3/css/responsive.dataTables.min.css', array(), true );
+		wp_enqueue_style( 'data-tables-responsive', '//cdn.datatables.net/responsive/3.0.6/css/responsive.dataTables.min.css', array(), true );
 
 		wp_register_style( 'courses-css', plugins_url( '/css/courses.css', __FILE__ ), false, '1.0.5', 'all' );
 
-		wp_enqueue_script( 'data-tables', '//cdn.datatables.net/2.1.8/js/dataTables.min.js', array(), '2.1.8', false );
+		wp_enqueue_script( 'data-tables', '//cdn.datatables.net/2.3.3/js/dataTables.min.js', array(), '2.3.3', false );
 		wp_script_add_data( 'data-tables', 'defer', true );
 
-		wp_enqueue_script( 'data-tables-searchpanes', '//cdn.datatables.net/searchpanes/2.3.3/js/dataTables.searchPanes.min.js', array(), '2.3.3', false );
+		wp_enqueue_script( 'data-tables-searchpanes', '//cdn.datatables.net/searchpanes/2.3.5/js/dataTables.searchPanes.min.js', array(), '2.3.5', false );
 		wp_script_add_data( 'data-tables-searchpanes', 'defer', true );
 
-		wp_enqueue_script( 'data-tables-select', '//cdn.datatables.net/select/2.1.0/js/dataTables.select.min.js', array(), '2.1.0', false );
+		wp_enqueue_script( 'data-tables-select', '//cdn.datatables.net/select/3.0.1/js/dataTables.select.min.js', array(), '3.0.1', false );
 		wp_script_add_data( 'data-tables-select', 'defer', true );
 
-		wp_enqueue_script( 'data-tables-responsive', '//cdn.datatables.net/responsive/3.0.3/js/dataTables.responsive.min.js', array(), '3.0.3', false );
+		wp_enqueue_script( 'data-tables-responsive', '//cdn.datatables.net/responsive/3.0.6/js/dataTables.responsive.min.js', array(), '3.0.6', false );
 		wp_script_add_data( 'data-tables-responsive', 'defer', true );
 
 		wp_register_script( 'courses-js', plugins_url( '/js/courses.js', __FILE__ ), array( 'jquery' ), '1.0.3', true );
