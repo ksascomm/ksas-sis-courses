@@ -91,7 +91,7 @@
 }
 .modal-body p {
 	padding-right: 1rem;
-	font-size: 1rem;
+	font-size: 1.125rem;
 	line-height: 1.5;
 }
 .modal-body ul {
@@ -288,4 +288,13 @@ table.dataTable > tbody > tr.child span.dtr-title {
 	/*.show-for-medium {
 	  display: none;
 	}*/
+}
+
+.course-listings.all-courses {
+	padding: 2rem;
+}
+@media screen and (width >= 96rem) {
+	.course-listings.all-courses {
+		padding: 0;
+	}
 }
