@@ -84,7 +84,7 @@
 	color: #fefefe;
 }
 .modal-header h1 {
-	font-family: gentona-bold,"Helvetica Neue",Roboto,sans-serif;
+	font-family: "worksans-bold", gentona-bold,"Helvetica Neue",Roboto,sans-serif;
 	font-weight: 700;
 	font-size: 1.5rem;
 	padding-right: 1rem;
@@ -104,7 +104,7 @@
 .modal-button {
 	border-style: solid;
 	border-width: 1px;
-	font-family: Gentona-SemiBold,system-ui,BlinkMacSystemFont,-apple-system,Segoe UI,sans-serif;
+	font-family: "worksans-bold", Gentona-SemiBold,system-ui,BlinkMacSystemFont,-apple-system,Segoe UI,sans-serif;
 	text-align: center;
 	height: 4rem;
 	width: 5rem;
@@ -152,8 +152,8 @@
 	background-color: #fefefe;
 }
 .course-table th {
-	font-family: gentona-semibold,"Helvetica Neue",Roboto,sans-serif;
-	font-weight: 600;
+	font-family: "worksans-bold", gentona-bold,"Helvetica Neue",Roboto,sans-serif;
+	font-weight: 700;
 }
 
 .course-table td {
@@ -199,7 +199,7 @@ div.dt-container .dt-paging .dt-paging-button:hover {
 .all-courses .dtsp-title {
 	font-size: 1.5rem;
 	display: none;
-	font-family: Gentona-SemiBold, system-ui;
+	font-family: "worksans-semibold", Gentona-SemiBold, system-ui;
 }
 
 .all-courses .dtsp-panesContainer {
@@ -236,7 +236,7 @@ div.dt-container .dt-paging .dt-paging-button:hover {
 }
 .all-courses input.dtsp-paneInputButton.dtsp-search {
 	background-color: #f4f4f4 !important;
-	font-family: Gentona-SemiBold, system-ui;
+	font-family: "worksans-semibold", Gentona-SemiBold, system-ui;
 }
 .all-courses div.dtsp-topRow {
 	margin-bottom: 0.5rem;
@@ -265,7 +265,7 @@ div.dt-container .dt-paging .dt-paging-button:hover {
 }
 
 table.dataTable > tbody > tr.child span.dtr-title {
-	font-family: gentona-semibold,"Helvetica Neue",Roboto,sans-serif;
+	font-family: "worksans-semibold", gentona-semibold,"Helvetica Neue",Roboto,sans-serif;
 	font-weight: 600;
 }
 
