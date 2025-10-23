@@ -43,7 +43,7 @@ get_header();
 	$course_curl->cache( WP_CONTENT_DIR . '/sis-cache/' . $site_name, 1209600 );
 
 	// Create API Url calls.
-	$courses_fall_url = 'https://sis.jhu.edu/api/classes?key=' . $key . '&School=Krieger%20School%20of%20Arts%20and%20Sciences&Term=' . $spring . '&Term=' . $summer . '&Term=' . $fall . '&Department=AS%20' . $department . '&status=' . $open . '&status=' . $approval . '&status=' . $waitlist . '&status=' . $reserved_open;
+	$courses_fall_url = 'https://sis.jhu.edu/api/classes?key=' . $key . '&School=Krieger%20School%20of%20Arts%20and%20Sciences&Term=' . $spring . '&Term=' . $summer . '&Term=' . $fall . '&Department=AS%20' . $department;
 
 	$course_data = array();
 	$output      = '';
@@ -61,8 +61,8 @@ get_header();
 
 				foreach ( $result->body as $course ) {
 
-					$section = $course->{'SectionName'};
-					$level   = $course->{'Level'};
+					$section            = $course->{'SectionName'};
+					$level              = $course->{'Level'};
 					$course_level_field = get_field( 'course_level' );
 					if ( get_field( 'course_level' ) === 'Graduate' ) {
 						$parent = 'Graduate';
@@ -111,15 +111,15 @@ get_header();
 			$description         = $result->body[0]->{'SectionDetails'}[0]->{'Description'};
 			$room                = $result->body[0]->{'SectionDetails'}[0]->{'Meetings'}[0]->{'Building'};
 			$roomnumber          = $result->body[0]->{'SectionDetails'}[0]->{'Meetings'}[0]->{'Room'};
-			$room2 = '';
-			$roomnumber2 = '';
+			$room2               = '';
+			$roomnumber2         = '';
 			if (
 				isset( $result->body[0]->{'SectionDetails'}[0]->{'Meetings'}[1] ) &&
 				is_object( $result->body[0]->{'SectionDetails'}[0]->{'Meetings'}[1] )
 			) {
 				$second_meeting = $result->body[0]->{'SectionDetails'}[0]->{'Meetings'}[1];
-				$room2 = isset( $second_meeting->{'Building'} ) ? $second_meeting->{'Building'} : '';
-				$roomnumber2 = isset( $second_meeting->{'Room'} ) ? $second_meeting->{'Room'} : '';
+				$room2          = isset( $second_meeting->{'Building'} ) ? $second_meeting->{'Building'} : '';
+				$roomnumber2    = isset( $second_meeting->{'Room'} ) ? $second_meeting->{'Room'} : '';
 			}
 			// Build room info with or without the second room.
 			$room_info = $room . '&nbsp;' . $roomnumber;
@@ -127,8 +127,8 @@ get_header();
 			if ( ! empty( $room2 ) || ! empty( $roomnumber2 ) ) {
 				$room_info .= '; ' . $room2 . '&nbsp;' . $roomnumber2;
 			}
-			$sectiondetails      = $result->body[0]->{'SectionDetails'}[0];
-			$tags                = array();
+			$sectiondetails = $result->body[0]->{'SectionDetails'}[0];
+			$tags           = array();
 
 			if ( isset( $sectiondetails->{'PosTags'} ) ) {
 				if ( ! empty( $sectiondetails->{'PosTags'} ) ) {
