@@ -72,7 +72,7 @@ jQuery(document).ready( function($) {
             preSelect: [
                 {
                     column: 5,
-                    rows:['Spring 2025']
+                    rows:['Spring 2026']
                 }
             ],
         },

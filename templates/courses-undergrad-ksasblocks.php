@@ -21,8 +21,8 @@ get_header();
 	$department                 = str_replace( ' ', '%20', $department_unclean );
 	$department                 = str_replace( '&', '%26', $department );
 	$fall                       = 'fall%202025';
-	$summer                     = 'summer%202025';
-	$spring                     = 'spring%202025';
+	$summer                     = 'summer%202026';
+	$spring                     = 'spring%202026';
 	$open                       = 'open';
 	$approval                   = 'approval%20required';
 	$closed                     = 'closed';
@@ -127,6 +127,11 @@ get_header();
 			if ( ! empty( $room2 ) || ! empty( $roomnumber2 ) ) {
 				$room_info .= '; ' . $room2 . '&nbsp;' . $roomnumber2;
 			}
+			if ( strtolower( trim( $location ) ) === 'online' ) {
+				$location_display = 'Online';
+			} else {
+				$location_display = $room_info;
+			}
 			$sectiondetails = $result->body[0]->{'SectionDetails'}[0];
 			$tags           = array();
 
@@ -140,7 +145,7 @@ get_header();
 			}
 			$print_tags = empty( $tags ) ? 'n/a' : implode( ', ', $tags );
 
-			$output .= '<tr><td>' . $course_number . '&nbsp;(' . $section_number . ')</td><td>' . $title . '</td><td class="show-for-medium">' . $meetings . '</td><td class="show-for-medium">' . $instructor . '</td><td class="show-for-medium">' . $room_info . '</td><td class="show-for-medium">' . $term . '</td>';
+			$output .= '<tr><td>' . $course_number . '&nbsp;(' . $section_number . ')</td><td>' . $title . '</td><td class="show-for-medium">' . $meetings . '</td><td class="show-for-medium">' . $instructor . '</td><td class="show-for-medium">' . $location_display . '</td><td class="show-for-medium">' . $term . '</td>';
 
 			$output .= '<td><p class="hidden">' . $description . '</p><button class="px-2 text-white modal-button bg-blue hover:text-black hover:bg-blue-light" href="#course-' . $clean_course_number . $section_number . $clean_term . '">More Info<span class="sr-only">-' . $title . '-' . $section_number . '</span></button></td></tr>';
 

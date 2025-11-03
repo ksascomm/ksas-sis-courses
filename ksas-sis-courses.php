@@ -12,14 +12,14 @@
  * Plugin Name: KSAS SIS Courses
  * Plugin URI:  http://www.wpexplorer.com/wordpress-page-templates-plugin/
  * Description: Displays courses from SIS
- * Version:     3.0.0
+ * Version:     3.1.0
  * Author:      KSAS Communications
  * Author URI:  https://krieger.jhu.edu
  * License:     GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  */
 
-define( 'KSAS_SIS_COURSES_VERSION', '3.0.0' );
+define( 'KSAS_SIS_COURSES_VERSION', '3.1.0' );
 
 require plugin_dir_path( __FILE__ ) . '/includes/class-pagetemplater.php';
 require plugin_dir_path( __FILE__ ) . '/includes/class-siscoursessettings.php';
@@ -32,28 +32,27 @@ if ( ! function_exists( 'register_script' ) ) {
 	 * @since 1.0.0
 	 */
 	function register_script() {
-		wp_enqueue_style( 'data-tables', '//cdn.datatables.net/2.3.3/css/dataTables.dataTables.min.css', array(), true );
+		wp_enqueue_style( 'data-tables', '//cdn.datatables.net/2.3.4/css/dataTables.dataTables.min.css', array(), true );
 
 		wp_enqueue_style( 'data-tables-searchpanes', '//cdn.datatables.net/searchpanes/2.3.5/css/searchPanes.dataTables.min.css', array(), true );
 
-		wp_enqueue_style( 'data-tables-responsive', '//cdn.datatables.net/responsive/3.0.6/css/responsive.dataTables.min.css', array(), true );
+		wp_enqueue_style( 'data-tables-responsive', '//cdn.datatables.net/responsive/3.0.7/css/responsive.dataTables.min.css', array(), true );
 
 		wp_register_style( 'courses-css', plugins_url( '/css/courses.css', __FILE__ ), false, '1.0.5', 'all' );
 
-		wp_enqueue_script( 'data-tables', '//cdn.datatables.net/2.3.3/js/dataTables.min.js', array(), '2.3.3', false );
+		wp_enqueue_script( 'data-tables', '//cdn.datatables.net/2.3.4/js/dataTables.min.js', array(), '2.3.4', false );
 		wp_script_add_data( 'data-tables', 'defer', true );
 
 		wp_enqueue_script( 'data-tables-searchpanes', '//cdn.datatables.net/searchpanes/2.3.5/js/dataTables.searchPanes.min.js', array(), '2.3.5', false );
 		wp_script_add_data( 'data-tables-searchpanes', 'defer', true );
 
-		wp_enqueue_script( 'data-tables-select', '//cdn.datatables.net/select/3.0.1/js/dataTables.select.min.js', array(), '3.0.1', false );
+		wp_enqueue_script( 'data-tables-select', '//cdn.datatables.net/select/3.0.1/js/dataTables.select.min.js', array(), '3.1.3', false );
 		wp_script_add_data( 'data-tables-select', 'defer', true );
 
-		wp_enqueue_script( 'data-tables-responsive', '//cdn.datatables.net/responsive/3.0.6/js/dataTables.responsive.min.js', array(), '3.0.6', false );
+		wp_enqueue_script( 'data-tables-responsive', '//cdn.datatables.net/responsive/3.0.7/js/dataTables.responsive.min.js', array(), '3.0.7', false );
 		wp_script_add_data( 'data-tables-responsive', 'defer', true );
 
-		wp_register_script( 'courses-js', plugins_url( '/js/courses.js', __FILE__ ), array( 'jquery' ), '1.0.3', true );
-
+		wp_register_script( 'courses-js', plugins_url( '/js/courses.js', __FILE__ ), array( 'jquery' ), '1.0.4', true );
 	}
 	add_action( 'init', 'register_script' );
 }
@@ -159,6 +158,5 @@ function exclude_page_templates_from_search( $query ) {
 			);
 		$query->set( 'meta_query', $meta_query );
 	}
-
 }
 add_filter( 'pre_get_posts', 'exclude_page_templates_from_search' );
