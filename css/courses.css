@@ -1,300 +1,159 @@
-/** General */
+/**
+ * SIS Course Listings Styles
+ * Sections: 1. Variables | 2. Base & Table | 3. DataTables Layout | 4. Responsive & Child Rows | 5. SearchPanes
+ */
+
+/* 1. Variables */
+:root {
+    /* Brand Colors */
+    --ksas-blue-heritage: #002d72;
+    --ksas-blue-spirit: #68ace5;
+    --ksas-black: #31261d;
+    --ksas-gray-light: #f4f4f4;
+    --ksas-gray-border: #888888;
+    --ksas-white: #fefefe;
+
+    /* Typography */
+    --ksas-font-bold: "worksans-bold", "system-ui", "-apple-system", "sans-serif";
+}
+
+/* 2. Base & Table Styles */
+.course-listings.all-courses {
+    padding: 2rem;
+}
+
+@media screen and (min-width: 96rem) {
+    .course-listings.all-courses { padding: 0; }
+}
+
 .hover\:text-black:hover {
-	color: #31261d;
-}
-/** Modals */
-/* The Modal (background) */
-.modal {
-	display: none;
-   /* Hidden by default */
-	position: fixed;
-   /* Stay in place */
-	z-index: 1005;
-   /* Location of the box */
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-   /* Full width */
-	height: 100%;
-   /* Full height */
-	overflow-y: auto;
-   /* Enable scroll if needed */
-	background-color: rgb(0,0,0);
-   /* Fallback color */
-	background-color: rgba(10,10,10,.45);
-   /* Black w/ opacity */
-}
-/* Modal Content */
-.modal-content {
-	position: relative;
-	margin: 0 auto;
-	background-color: #fefefe;
-	padding: 1rem;
-	border: 1px solid #cacaca;
-	border-radius: 0;
-	background-color: #fefefe;
-	border: 1px solid #888;
-	width: 80%;
-	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-	-webkit-animation-name: animatetop;
-	-webkit-animation-duration: 0.4s;
-	animation-name: animatetop;
-	animation-duration: 0.4s 
-}
-/* Add Animation */
-@-webkit-keyframes animatetop {
-	from {
-	   top:-300px;
-		opacity:0
-   }
-	to {
-	   top:0;
-		opacity:1
-   }
-}
-@keyframes animatetop {
-	from {
-	   top:-300px;
-		opacity:0
-   }
-	to {
-	   top:0;
-		opacity:1
-   }
-}
-/* The Close Button */
-.close {
-	position: absolute;
-	z-index: 10;
-	color: #8a8a8a;
-	cursor: pointer;
-	right: 1rem;
-	top: 0.5rem;
-	font-size: 2em;
-	line-height: 1;
-}
-.close:hover, .close:focus {
-	color: #31261d;
-	text-decoration: none;
-	cursor: pointer;
-}
-.modal-header {
-	color: #fefefe;
-}
-.modal-header h1 {
-	font-family: "worksans-bold", gentona-bold,"Helvetica Neue",Roboto,sans-serif;
-	font-weight: 700;
-	font-size: 1.5rem;
-	padding-right: 1rem;
-}
-.modal-body p {
-	padding-right: 1rem;
-	font-size: 1.125rem;
-	line-height: 1.5;
-}
-.modal-body ul {
-	padding-left: 1.25rem;
-}
-.modal-body ul li {
-	margin: 0.5rem 0;
-	padding-left: 0;
-}
-.modal-button {
-	border-style: solid;
-	border-width: 1px;
-	font-family: "worksans-bold", Gentona-SemiBold,system-ui,BlinkMacSystemFont,-apple-system,Segoe UI,sans-serif;
-	text-align: center;
-	height: 4rem;
-	width: 5rem;
+    color: var(--ksas-black);
 }
 
-@media print, screen and (max-width: 39.9988em) {
-	.modal-content {
-	  top: 0;
-	  right: 0;
-	  bottom: 0;
-	  left: 0;
-	  width: 100%;
-	  max-width: none;
-	  height: 100%;
-	  min-height: 100%;
-	  margin-left: 0;
-	  border: 0;
-	  border-radius: 0;
-	}
-  }
+.course-table :is(tbody, tfoot, thead) {
+    border: 1px solid #f1f1f1;
+    background-color: var(--ksas-white);
+}
 
-@media print, screen and (min-width: 40em) {
-	.modal-content {
-		width: 600px;
-		max-width: 87.5rem;
-	}
-	.modal {
-		padding-top: 100px;
-	}
-}
-@media print, screen and (min-width: 1280px) {
-	.modal-content {
-		width: 1000px;
-		max-width: 87.5rem;
-	}
-}
-/** Course Table */
 .course-table thead {
-	background: rgba(191,204,217,.25);
-	color: #31261d;
-	font-size: 1.125rem;
+    background: rgba(191, 204, 217, .25) !important;
+    color: var(--ksas-black);
+    font-size: 1.125rem;
 }
-.course-table tbody, tfoot, thead {
-	border: 1px solid #f1f1f1;
-	background-color: #fefefe;
-}
+
 .course-table th {
-	font-family: "worksans-bold", gentona-bold,"Helvetica Neue",Roboto,sans-serif;
-	font-weight: 700;
+    font-family: var(--ksas-font-bold);
+    font-weight: 700;
 }
 
 .course-table td {
-	font-size: 1rem;
-	vertical-align: top;
-	padding-inline-start: 0;
-	padding-inline-end: 0;
-}
-
-.course-listings div.dataTables_wrapper div.dataTables_info,
-.course-listings .dt-info {
-	padding: 8px;
-}
-.course-listings .dataTables_info,
-.course-listings .dt-info {
-	float: inherit!important;
-	clear: none;
-}
-
-table.dataTable.course-table tbody tr.even{
-	background-color: #F8F8F8 !important;
-}
-/** Data Tables Overrides */
-.dataTables_wrapper .dataTables_length,
-.dataTables_wrapper .dt-length {
-	float: inherit!important;
-}
-.dataTables_wrapper .dataTables_paginate .paginate_button.current,
-div.dt-container .dt-paging .dt-paging-button.current {
-	background: #68ace5 !important;
-}
-.dataTables_wrapper .dataTables_paginate .paginate_button:hover,
-div.dt-container .dt-paging .dt-paging-button:hover {
-	background: #002d72 !important;
-}
-.all-courses .dtsp-searchPanes .dtsp-searchPane tbody tr {
-	background-color: white;
-	font-size: 1.125rem;
-}
-.all-courses .course-table tbody tr:nth-child(even) {
-	background-color: #f4f4f4 !important;
-}
-.all-courses .dtsp-title {
-	font-size: 1.5rem;
-	display: none;
-	font-family: "worksans-semibold", Gentona-SemiBold, system-ui;
-}
-
-.all-courses .dtsp-panesContainer {
-	padding: .5rem;
-	border: 2px solid #f4f4f4;
-}
-
-.all-courses div.dtsp-panesContainer button.dtsp-clearAll {
-	background-color: #002d72;
-	color: #fefefe;
-}
-.all-courses div.dtsp-panesContainer button.dtsp-clearAll:disabled {
-	opacity: 0.25;
-	cursor: not-allowed;
-}
-.all-courses div.dtsp-panesContainer div.dataTables_wrapper div.dataTables_scrollBody div.dtsp-nameCont span.dtsp-name {
-	font-size: 1rem;
-}
-/*.all-courses table.dataTable tbody tr.selected {
-	background-color: #68ace5;
-}*/
-
-.all-courses .dataTable > tbody > tr.selected > * {
-	box-shadow: none;
-	background-color: #002d72;
-}
-.all-courses div.dtsp-searchPane div.dataTables_scrollBody {
-	height: auto !important;
-}
-.all-courses .dataTables_wrapper .dataTables_length select,
-.all-courses .dt-length select {
-	padding: 0.5rem !important;
-	padding-right: 1.5rem !important;
-}
-.all-courses input.dtsp-paneInputButton.dtsp-search {
-	background-color: #f4f4f4 !important;
-	font-family: "worksans-semibold", Gentona-SemiBold, system-ui;
-}
-.all-courses div.dtsp-topRow {
-	margin-bottom: 0.5rem;
-}
-
-.all-courses .dt-search {
-	float: right;
-}
-
-/*.all-courses table.dataTable>tbody>tr>th, table.dataTable>tbody>tr>td {
-	padding: 0;
-}*/
-
-.page-template-courses-undergrad-ksasblocks div.dtsp-panesContainer button.dtsp-clearAll, 
-.page-template-courses-undergrad-ksasblocks div.dtsp-panesContainer button.dtsp-collapseAll,
-.page-template-courses-undergrad-ksasblocks div.dtsp-panesContainer button.dtsp-showAll {
-  padding: 5px 10px;
-}
-
-.page-template-courses-undergrad-ksasblocks .dt-scroll-body {
-  height: auto !important;
-}
-
-.all-courses div.dt-container div.dt-layout-full > :only-child {
-	width: 100%;
-}
-
-table.dataTable > tbody > tr.child span.dtr-title {
-	font-family: "worksans-semibold", gentona-semibold,"Helvetica Neue",Roboto,sans-serif;
-	font-weight: 600;
-}
-
-@media screen and (min-width:767px) {
-	.course-table li[data-dtr-index="6"] {
-		display: none;
-	}
-}
-
-@media screen and (min-width: 1024px) {
-	.dt-paging.paging_full_numbers {
-		float: right;
-	  }	
+    font-size: 1rem;
+    vertical-align: top;
 }
 
 @media screen and (max-width: 1023px) {
-	.course-table td {
-		font-size: .9rem;
-	}
-	/*.show-for-medium {
-	  display: none;
-	}*/
+    .course-table td { font-size: .9rem; }
 }
 
-.course-listings.all-courses {
-	padding: 2rem;
+/* Alternating Row Color */
+.all-courses .course-table tbody tr:nth-child(even),
+table.dataTable.course-table tbody tr.even {
+    background-color: var(--ksas-gray-light) !important;
 }
-@media screen and (width >= 96rem) {
-	.course-listings.all-courses {
-		padding: 0;
-	}
+
+/* 3. DataTables Layout (Info, Paging, Length) */
+.course-listings .dt-info,
+.course-listings .dataTables_info {
+    padding: 8px;
+    float: inherit !important;
+    clear: none;
+}
+
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dt-length {
+    float: inherit !important;
+}
+
+.all-courses .dt-length select,
+.all-courses .dataTables_wrapper .dataTables_length select {
+    padding: 0.5rem 1.5rem 0.5rem 0.5rem !important;
+}
+
+.all-courses .dt-search {
+    float: right;
+}
+
+/* Pagination Highlights */
+div.dt-container .dt-paging .dt-paging-button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: var(--ksas-blue-spirit) !important;
+    color: white !important;
+}
+
+div.dt-container .dt-paging .dt-paging-button:hover,
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: var(--ksas-blue-heritage) !important;
+    color: white !important;
+}
+
+@media screen and (min-width: 1024px) {
+    .dt-paging.paging_full_numbers { float: right; } 
+}
+
+/* 4. Responsive & Child Rows (The "None" Column) */
+table.dataTable > tbody > tr.child span.dtr-title {
+    font-family: var(--ksas-font-bold);
+    font-weight: 600;
+}
+
+.description-text h3 {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+.all-courses .dataTable > tbody > tr.selected > * {
+    box-shadow: none;
+    background-color: var(--ksas-blue-heritage);
+}
+
+/* 5. SearchPanes UI */
+.all-courses .dtsp-panesContainer {
+    padding: .5rem;
+    border: 2px solid var(--ksas-gray-light);
+    margin-bottom: 1rem;
+}
+
+/* Hide Unnecessary SearchPane Elements */
+.all-courses .dtsp-title,
+.all-courses .dtsp-titleRow,
+.dtsp-searchPane .dtsp-topRow,
+.dtsp-searchPane .dtsp-searchCont,
+.dtsp-searchPane .dtsp-buttonCont,
+.dtsp-searchPane .dt-search,
+.dtsp-searchPane input.dtsp-search {
+    display: none !important;
+}
+
+.all-courses .dtsp-searchPanes .dtsp-searchPane tbody tr {
+    background-color: var(--ksas-white);
+    font-size: 1.125rem;
+}
+
+.all-courses div.dtsp-searchPane div.dataTables_scrollBody,
+.page-template-courses-undergrad-ksasblocks .dt-scroll-body {
+    height: auto !important;
+}
+
+/* SearchPane Action Buttons */
+.all-courses div.dtsp-panesContainer button.dtsp-clearAll,
+.page-template-courses-undergrad-ksasblocks div.dtsp-panesContainer button:is(.dtsp-clearAll, .dtsp-collapseAll, .dtsp-showAll) {
+    background-color: var(--ksas-blue-heritage);
+    color: var(--ksas-white);
+    padding: 5px 10px;
+    font-size: 1rem;
+}
+
+.all-courses div.dtsp-panesContainer button.dtsp-clearAll:disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
 }

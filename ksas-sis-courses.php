@@ -6,157 +6,116 @@
  * @author    KSAS Communications <ksasweb@jhu.edu>
  * @license   GPL-2.0+
  * @link      https://krieger.jhu.edu
- * @copyright 2022 KSAS Communications
+ * @copyright 2026 KSAS Communications
  *
  * @wordpress-plugin
  * Plugin Name: KSAS SIS Courses
- * Plugin URI:  http://www.wpexplorer.com/wordpress-page-templates-plugin/
- * Description: Displays courses from SIS
- * Version:     3.1.0
+ * Description: Displays courses from SIS.
+ * Version:     4.0.0
  * Author:      KSAS Communications
  * Author URI:  https://krieger.jhu.edu
  * License:     GPL-2.0+
- * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  */
 
-define( 'KSAS_SIS_COURSES_VERSION', '3.1.0' );
-
-require plugin_dir_path( __FILE__ ) . '/includes/class-pagetemplater.php';
-require plugin_dir_path( __FILE__ ) . '/includes/class-siscoursessettings.php';
-
-
-if ( ! function_exists( 'register_script' ) ) {
-	/**
-	 * The code that register script(s) and style(s) on initialization.
-	 *
-	 * @since 1.0.0
-	 */
-	function register_script() {
-		wp_enqueue_style( 'data-tables', '//cdn.datatables.net/2.3.4/css/dataTables.dataTables.min.css', array(), true );
-
-		wp_enqueue_style( 'data-tables-searchpanes', '//cdn.datatables.net/searchpanes/2.3.5/css/searchPanes.dataTables.min.css', array(), true );
-
-		wp_enqueue_style( 'data-tables-responsive', '//cdn.datatables.net/responsive/3.0.7/css/responsive.dataTables.min.css', array(), true );
-
-		wp_register_style( 'courses-css', plugins_url( '/css/courses.css', __FILE__ ), false, '1.0.5', 'all' );
-
-		wp_enqueue_script( 'data-tables', '//cdn.datatables.net/2.3.4/js/dataTables.min.js', array(), '2.3.4', false );
-		wp_script_add_data( 'data-tables', 'defer', true );
-
-		wp_enqueue_script( 'data-tables-searchpanes', '//cdn.datatables.net/searchpanes/2.3.5/js/dataTables.searchPanes.min.js', array(), '2.3.5', false );
-		wp_script_add_data( 'data-tables-searchpanes', 'defer', true );
-
-		wp_enqueue_script( 'data-tables-select', '//cdn.datatables.net/select/3.0.1/js/dataTables.select.min.js', array(), '3.1.3', false );
-		wp_script_add_data( 'data-tables-select', 'defer', true );
-
-		wp_enqueue_script( 'data-tables-responsive', '//cdn.datatables.net/responsive/3.0.7/js/dataTables.responsive.min.js', array(), '3.0.7', false );
-		wp_script_add_data( 'data-tables-responsive', 'defer', true );
-
-		wp_register_script( 'courses-js', plugins_url( '/js/courses.js', __FILE__ ), array( 'jquery' ), '1.0.4', true );
-	}
-	add_action( 'init', 'register_script' );
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
 }
 
+define( 'KSAS_SIS_COURSES_VERSION', '4.0.0' );
 
-if ( ! function_exists( 'enqueue_style' ) ) {
-	/**
-	 * The code that enqueues the registered script(s) and style(s) above.
-	 *
-	 * @since 1.0.0
-	 */
-	function enqueue_style() {
-		wp_enqueue_script( 'courses-js' );
-		wp_enqueue_style( 'courses-css' );
-	}
-	add_action( 'wp_enqueue_scripts', 'enqueue_style' );
-}
-
-
-if ( function_exists( 'acf_add_local_field_group' ) ) :
-	/**
-	 * The code that sets the Course Level using ACF.
-	 *
-	 * @since 2.0.0
-	 */
-	acf_add_local_field_group(
-		array(
-			'key'                   => 'group_6425d800396b8',
-			'title'                 => 'SIS Course Level',
-			'fields'                => array(
-				array(
-					'key'               => 'field_6425d80032601',
-					'label'             => 'Course Level',
-					'name'              => 'course_level',
-					'aria-label'        => '',
-					'type'              => 'radio',
-					'instructions'      => '',
-					'required'          => 0,
-					'conditional_logic' => 0,
-					'wrapper'           => array(
-						'width' => '',
-						'class' => '',
-						'id'    => '',
-					),
-					'choices'           => array(
-						'Undergraduate' => 'Undergraduate',
-						'Graduate'      => 'Graduate',
-					),
-					'default_value'     => '',
-					'return_format'     => 'value',
-					'allow_null'        => 0,
-					'other_choice'      => 0,
-					'layout'            => 'vertical',
-					'save_other_choice' => 0,
-				),
-			),
-			'location'              => array(
-				array(
-					array(
-						'param'    => 'page_template',
-						'operator' => '==',
-						'value'    => '../templates/courses-undergrad-ksasblocks.php',
-					),
-				),
-			),
-			'menu_order'            => 0,
-			'position'              => 'normal',
-			'style'                 => 'default',
-			'label_placement'       => 'top',
-			'instruction_placement' => 'label',
-			'hide_on_screen'        => '',
-			'active'                => true,
-			'description'           => '',
-			'show_in_rest'          => 0,
-		)
-	);
-
-	endif;
+// Load Dependencies.
+require_once plugin_dir_path( __FILE__ ) . '/includes/class-pagetemplater.php';
+require_once plugin_dir_path( __FILE__ ) . '/includes/class-siscoursessettings.php';
 
 /**
- * Exclude the created Page Template from search results
+ * 1. Assets: Register and Enqueue Scripts/Styles.
  */
-function exclude_page_templates_from_search( $query ) {
+function ksas_sis_register_assets() {
+	$version = KSAS_SIS_COURSES_VERSION;
 
-	global $wp_the_query;
-	if ( ( $wp_the_query === $query ) && ( is_search() ) && ( ! is_admin() ) ) {
-		$meta_query =
+	// Styles.
+	wp_enqueue_style( 'data-tables', 'https://cdn.datatables.net/2.3.7/css/dataTables.dataTables.min.css', array(), $version );
+	wp_enqueue_style( 'data-tables-select-css', 'https://cdn.datatables.net/select/3.1.3/css/select.dataTables.min.css', array(), '3.1.3' );
+	wp_enqueue_style( 'data-tables-searchpanes-css', 'https://cdn.datatables.net/searchpanes/2.3.5/css/searchPanes.dataTables.min.css', array(), '2.3.5' );
+	wp_enqueue_style( 'data-tables-responsive-css', 'https://cdn.datatables.net/responsive/3.0.8/css/responsive.dataTables.min.css', array(), '3.0.8' );
+	wp_enqueue_style( 'ksas-sis-courses-css', plugins_url( '/css/courses.css', __FILE__ ), array(), '4.0.0' );
+
+	// Scripts.
+	wp_enqueue_script( 'data-tables', 'https://cdn.datatables.net/2.3.7/js/dataTables.min.js', array( 'jquery' ), '2.3.4', true );
+	wp_enqueue_script( 'data-tables-select', 'https://cdn.datatables.net/select/3.1.3/js/dataTables.select.min.js', array( 'data-tables' ), '3.1.3', true );
+	wp_enqueue_script( 'data-tables-searchpanes', 'https://cdn.datatables.net/searchpanes/2.3.5/js/dataTables.searchPanes.min.js', array( 'data-tables', 'data-tables-select' ), '2.3.5', true );
+	wp_enqueue_script( 'data-tables-responsive', 'https://cdn.datatables.net/responsive/3.0.8/js/dataTables.responsive.min.js', array( 'data-tables' ), '3.0.8', true );
+
+	// Add Defer attribute to DataTables scripts.
+	wp_script_add_data( 'data-tables', 'defer', true );
+	wp_script_add_data( 'data-tables-searchpanes', 'defer', true );
+	wp_script_add_data( 'data-tables-select', 'defer', true );
+	wp_script_add_data( 'data-tables-responsive', 'defer', true );
+
+	// Custom JS.
+	wp_enqueue_script( 'ksas-sis-courses-js', plugins_url( '/js/courses.js', __FILE__ ), array( 'jquery', 'data-tables' ), '4.0.0', true );
+}
+add_action( 'wp_enqueue_scripts', 'ksas_sis_register_assets' );
+
+/**
+ * 2. ACF: Register Local Field Group.
+ */
+function ksas_sis_add_acf_fields() {
+	if ( function_exists( 'acf_add_local_field_group' ) ) :
+		acf_add_local_field_group(
 			array(
-				// set OR, default is AND.
-						'relation' => 'OR',
-				// remove pages with foo.php template from results.
-				array(
-					'key'     => '_wp_page_template',
-					'value'   => '../templates/courses-undergrad-ksasblocks.php',
-					'compare' => '!=',
-				),
-				// show all entries that do not have a key '_wp_page_template'.
-						array(
-							'key'     => '_wp_page_template',
-							'value'   => 'page-thanks.php',
-							'compare' => 'NOT EXISTS',
+				'key'      => 'group_6425d800396b8',
+				'title'    => 'SIS Course Level',
+				'fields'   => array(
+					array(
+						'key'     => 'field_6425d80032601',
+						'label'   => 'Course Level',
+						'name'    => 'course_level',
+						'type'    => 'radio',
+						'choices' => array(
+							'Undergraduate' => 'Undergraduate',
+							'Graduate'      => 'Graduate',
 						),
-			);
+						'layout'  => 'vertical',
+					),
+				),
+				'location' => array(
+					array(
+						array(
+							'param'    => 'page_template',
+							'operator' => '==',
+							'value'    => '../templates/courses-undergrad-ksasblocks.php',
+						),
+					),
+				),
+				'active'   => true,
+			)
+		);
+	endif;
+}
+add_action( 'acf/init', 'ksas_sis_add_acf_fields' );
+
+/**
+ * 3. Search: Exclude specific Page Templates from search results.
+ *
+ * @param WP_Query $query The query object.
+ */
+function ksas_sis_exclude_templates_from_search( $query ) {
+	if ( ! is_admin() && $query->is_main_query() && $query->is_search() ) {
+		$meta_query = array(
+			'relation' => 'OR',
+			array(
+				'key'     => '_wp_page_template',
+				'value'   => '../templates/courses-undergrad-ksasblocks.php',
+				'compare' => '!=',
+			),
+			array(
+				'key'     => '_wp_page_template',
+				'compare' => 'NOT EXISTS',
+			),
+		);
 		$query->set( 'meta_query', $meta_query );
 	}
 }
-add_filter( 'pre_get_posts', 'exclude_page_templates_from_search' );
+add_action( 'pre_get_posts', 'ksas_sis_exclude_templates_from_search' );
