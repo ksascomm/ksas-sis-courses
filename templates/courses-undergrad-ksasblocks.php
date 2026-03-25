@@ -24,7 +24,7 @@ $department = isset( $sis_options['department_name_0'] )
 	: '';
 
 // Note: Ensure these dates are correct for the current academic cycle.
-$fall   = rawurlencode( 'Fall 2025' );
+$fall   = rawurlencode( 'Fall 2026' );
 $spring = rawurlencode( 'Spring 2026' );
 $summer = rawurlencode( 'Summer 2026' );
 
