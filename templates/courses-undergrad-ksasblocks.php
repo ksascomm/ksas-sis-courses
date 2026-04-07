@@ -170,9 +170,6 @@ $course_curl->get(
 			}
 			$print_tags = empty( $tags ) ? 'n/a' : implode( ', ', $tags );
 
-			// Modal ID - must be consistent for JS to find it.
-			$unique_id = esc_attr( 'course-' . $clean_course_number . $section_number . $clean_term );
-
 			ob_start(); // Buffer the output to avoid PHPCS "Direct echo" warnings in some contexts.
 			?>
 		<tr>

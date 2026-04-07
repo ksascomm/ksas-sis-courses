@@ -42,7 +42,7 @@ function ksas_sis_register_assets() {
 	wp_enqueue_style( 'ksas-sis-courses-css', plugins_url( '/css/courses.css', __FILE__ ), array(), '4.0.0' );
 
 	// Scripts.
-	wp_enqueue_script( 'data-tables', 'https://cdn.datatables.net/2.3.7/js/dataTables.min.js', array( 'jquery' ), '2.3.4', true );
+	wp_enqueue_script( 'data-tables', 'https://cdn.datatables.net/2.3.7/js/dataTables.min.js', array( 'jquery' ), '2.3.7', true );
 	wp_enqueue_script( 'data-tables-select', 'https://cdn.datatables.net/select/3.1.3/js/dataTables.select.min.js', array( 'data-tables' ), '3.1.3', true );
 	wp_enqueue_script( 'data-tables-searchpanes', 'https://cdn.datatables.net/searchpanes/2.3.5/js/dataTables.searchPanes.min.js', array( 'data-tables', 'data-tables-select' ), '2.3.5', true );
 	wp_enqueue_script( 'data-tables-responsive', 'https://cdn.datatables.net/responsive/3.0.8/js/dataTables.responsive.min.js', array( 'data-tables' ), '3.0.8', true );
