@@ -40,9 +40,32 @@ $course_curl->option(
 );
 
 // Cache configuration (14 days).
-$site_name = wp_parse_url( get_site_url(), PHP_URL_PATH );
-$site_name = trim( $site_name, '/' ); // Clean up slashes.
-$course_curl->cache( WP_CONTENT_DIR . '/sis-cache/' . $site_name, 1209600 );
+// a. Get current site details dynamically.
+$blog_details = get_blog_details();
+
+// b. Build a unique folder identifier (slug or blog ID).
+if ( is_subdomain_install() ) {
+	// For Subdomain networks (e.g., biology.jhu.edu -> biology-jhu-edu).
+	$folder_name = sanitize_key( $blog_details->domain );
+} else {
+	// For Subdirectory networks (e.g., jhu.edu/biology -> biology).
+	$folder_name = sanitize_key( trim( $blog_details->path, '/' ) );
+}
+
+// c.Fallback to Blog ID if path/domain resolves empty (e.g., main network root site).
+if ( empty( $folder_name ) ) {
+	$folder_name = 'site-' . get_current_blog_id();
+}
+
+$cache_dir = WP_CONTENT_DIR . '/sis-cache/' . $folder_name;
+
+// d. Ensure the folder exists recursively.
+if ( ! file_exists( $cache_dir ) ) {
+	wp_mkdir_p( $cache_dir );
+}
+
+// e. Set Zebra cURL cache path.
+$course_curl->cache( $cache_dir, 1209600 );
 
 // 4. Construct API URL
 // We manually concat Term because SIS often requires "Term=X&Term=Y" format
