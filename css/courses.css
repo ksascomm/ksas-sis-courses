@@ -22,9 +22,10 @@
     padding: 2rem;
 }
 
+/*
 @media screen and (min-width: 96rem) {
     .course-listings.all-courses { padding: 0; }
-}
+}*/
 
 .hover\:text-black:hover {
     color: var(--ksas-black);
@@ -94,6 +95,10 @@ div.dt-container .dt-paging .dt-paging-button:hover,
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
     background: var(--ksas-blue-heritage) !important;
     color: white !important;
+}
+
+.dt-container .dt-paging .dt-paging-button {
+  padding: initial !important;
 }
 
 @media screen and (min-width: 1024px) {
