@@ -17,6 +17,7 @@ if ( ! class_exists( 'SISCoursesSettings' ) ) {
 
 		/**
 		 * Holds the values to be used in the fields callbacks.
+		 *
 		 * @var array
 		 */
 		private $options;
@@ -34,10 +35,10 @@ if ( ! class_exists( 'SISCoursesSettings' ) ) {
 		 */
 		public function add_plugin_page() {
 			add_options_page(
-				'SIS Courses Settings', // Page title
-				'SIS Courses',          // Menu title
-				'manage_options',       // Capability
-				'sis-courses',          // Menu slug
+				'SIS Courses Settings', // Page title.
+				'SIS Courses',          // Menu title.
+				'manage_options',       // Capability.
+				'sis-courses',          // Menu slug.
 				array( $this, 'create_admin_page' )
 			);
 		}
@@ -69,24 +70,24 @@ if ( ! class_exists( 'SISCoursesSettings' ) ) {
 		 */
 		public function page_init() {
 			register_setting(
-				'sis_courses_plugin_option_group', // Option group
-				'sis_courses_plugin_option_name',  // Option name
-				array( $this, 'sanitize' )         // Sanitize
+				'sis_courses_plugin_option_group', // Option group.
+				'sis_courses_plugin_option_name',  // Option name.
+				array( $this, 'sanitize' )         // Sanitize.
 			);
 
 			add_settings_section(
-				'sis_courses_plugin_setting_section', // ID
-				'API Configuration',                  // Title
-				array( $this, 'section_info' ),        // Callback
-				'sis-courses-admin'                   // Page
+				'sis_courses_plugin_setting_section', // ID.
+				'API Configuration',                  // Title.
+				array( $this, 'section_info' ),        // Callback.
+				'sis-courses-admin'                   // Page.
 			);
 
 			add_settings_field(
-				'department_name_0',                  // ID
-				'Department Name',                    // Title
-				array( $this, 'department_callback' ), // Callback
-				'sis-courses-admin',                  // Page
-				'sis_courses_plugin_setting_section'  // Section
+				'department_name_0',                  // ID.
+				'Department Name',                    // Title.
+				array( $this, 'department_callback' ), // Callback.
+				'sis-courses-admin',                  // Page.
+				'sis_courses_plugin_setting_section'  // Section.
 			);
 		}
 

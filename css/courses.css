@@ -14,7 +14,7 @@
     --ksas-white: #fefefe;
 
     /* Typography */
-    --ksas-font-bold: "worksans-bold", "system-ui", "-apple-system", "sans-serif";
+    --ksas-font-bold: "work sans", "system-ui", "-apple-system", "sans-serif";
 }
 
 /* 2. Base & Table Styles */
@@ -108,7 +108,7 @@ div.dt-container .dt-paging .dt-paging-button:hover,
 /* 4. Responsive & Child Rows (The "None" Column) */
 table.dataTable > tbody > tr.child span.dtr-title {
     font-family: var(--ksas-font-bold);
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .description-text h3 {
